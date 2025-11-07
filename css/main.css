@@ -1,0 +1,12 @@
+*{
+font-family: vazir ;
+}
+@font-face {
+    font-family:vazir ;
+    src: url("../fonts/Vazir-Regular.woff") format("woff");
+}
+.bg_navi{
+    background-color:rgb(158, 188, 226);
+    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
