@@ -6,7 +6,7 @@ font-family: vazir ;
     src: url("../fonts/Vazir-Regular.woff") format("woff");
 }
 .bg_navi{
-    background:rgb(173, 207, 255) ;
+    background:rgb(173, 201, 240) ;
 }
 .slctor_img_nav{
     transition: all 1s ease 0.2s;
