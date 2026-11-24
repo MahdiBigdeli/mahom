@@ -4,45 +4,49 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>جعبه ابزار</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
+
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<header><div class="nav"><div class="logo" id="lg" style="cursor:pointer"><span class="ic" data-i="logo"></span>جعبه ابزار</div><input class="search" id="q" type="text" placeholder="جستجوی ابزار… (مثلاً تایمر، فاکتور، فاصله)"><a class="out" href="#" id="n-cta">همه‌ی ابزارها</a></div></header>
 <div class="wrap">
-<header><div class="logo"><span class="ic" data-i="logo"></span> جعبه ابزار</div></header>
 
 <main id="home">
 <div class="top">
-<div><input class="search" id="q" type="text" placeholder="جستجوی ابزار… (مثلاً تایمر، فاکتور، فاصله)"><div class="banner" id="bn">جای بنر؛ عکس را بعداً اضافه می‌کنیم</div></div>
+<div><div class="banner" id="bn">جای بنر؛ عکس را بعداً اضافه می‌کنیم</div></div>
 <aside class="side"><div class="clock" id="clk"></div><div class="dt" id="dt"></div><div class="cal" id="cal"></div></aside>
 </div>
-<div id="pop" style="display:none"><div class="sec">⭐ پرکاربردترین‌ها</div><div class="grid" id="popg"></div></div>
-<div class="sec" id="sec-t">خدمات</div>
-<div class="grid" id="grid"></div>
+<div id="pop" style="display:none"><div class="sec">پرکاربردترین‌ها</div><div class="grid" id="popg"></div></div>
+<div class="panel"><div class="sec" id="sec-t">خدمات</div><div class="grid" id="grid"></div></div>
 <div id="empty" style="display:none;text-align:center;color:var(--mut);padding:24px">ابزاری پیدا نشد.</div>
 </main>
 
 <section class="tool" id="t-notepad"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="notepad"></i><span>دفترچه یادداشت</span></h2>
-<div class="row"><button class="btn" id="n-new" style="flex:0 0 auto">+ یادداشت جدید</button></div>
+<div class="row"><input type="text" id="n-s" placeholder="جستجو در یادداشت‌ها…" style="flex:3 1 200px"><button class="btn" id="n-new" style="flex:0 0 auto">+ یادداشت جدید</button></div>
 <div class="row" id="n-list"></div>
 <div id="n-ed" style="display:none"><input type="text" id="n-t" placeholder="عنوان"><textarea id="n-b" placeholder="متن یادداشت…" style="margin-top:8px"></textarea>
-<button class="ghost" id="n-del">حذف این یادداشت</button></div></section>
+<div class="row"><small id="n-i" style="color:var(--mut);flex:3 1 200px"></small><button class="ghost" id="n-cp" style="flex:0 0 auto">کپی</button><button class="ghost" id="n-dl" style="flex:0 0 auto">دانلود TXT</button><button class="ghost" id="n-del" style="flex:0 0 auto">حذف</button></div></div></section>
 
 <section class="tool" id="t-timer"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="timer"></i><span>تایمر</span></h2>
 <div class="tabs"><button class="ghost on" data-tb="cd">معکوس</button><button class="ghost" data-tb="sw">کرنومتر</button><button class="ghost" data-tb="pm">پومودورو</button></div>
-<div class="tp" id="tp-cd" style="display:block"><div class="row"><input type="number" id="cd-m" value="5" min="0"><input type="number" id="cd-s" value="0" min="0" max="59"></div>
+<div class="tp" id="tp-cd" style="display:block"><div class="row" id="cd-pr"><button class="ghost" data-m="1">۱ دقیقه</button><button class="ghost" data-m="5">۵ دقیقه</button><button class="ghost" data-m="10">۱۰ دقیقه</button><button class="ghost" data-m="15">۱۵ دقیقه</button><button class="ghost" data-m="25">۲۵ دقیقه</button><button class="ghost" data-m="45">۴۵ دقیقه</button></div>
+<div class="row"><div><label>دقیقه</label><input type="number" id="cd-m" value="5" min="0"></div><div><label>ثانیه</label><input type="number" id="cd-s" value="0" min="0" max="59"></div></div>
 <div class="big" id="cd-d">05:00</div><div class="row"><button class="btn" id="cd-go">شروع / توقف</button><button class="btn" id="cd-rs">بازنشانی</button></div></div>
 <div class="tp" id="tp-sw"><div class="big" id="sw-d">00:00.00</div><div class="row"><button class="btn" id="sw-go">شروع / توقف</button><button class="btn" id="sw-lap">ثبت دور</button><button class="btn" id="sw-rs">بازنشانی</button></div><ul id="sw-l"></ul></div>
-<div class="tp" id="tp-pm"><div style="text-align:center" id="pm-m">زمان تمرکز</div><div class="big" id="pm-d">25:00</div><div class="row"><button class="btn" id="pm-go">شروع / توقف</button><button class="btn" id="pm-rs">بازنشانی</button></div><small style="color:var(--mut)">۲۵ دقیقه تمرکز، ۵ دقیقه استراحت؛ با هر پایان، هشدار صوتی پخش می‌شود.</small></div></section>
+<div class="tp" id="tp-pm"><div class="row"><div><label>تمرکز (دقیقه)</label><input type="number" id="pm-w" value="25" min="1"></div><div><label>استراحت (دقیقه)</label><input type="number" id="pm-b" value="5" min="1"></div></div>
+<div style="text-align:center" id="pm-m">زمان تمرکز</div><div class="big" id="pm-d">25:00</div><div class="row"><button class="btn" id="pm-go">شروع / توقف</button><button class="btn" id="pm-rs">بازنشانی</button></div>
+<small style="color:var(--mut)">دوره‌های تمرکز کامل‌شده: <b id="pm-c">0</b> · با پایان هر مرحله هشدار صوتی پخش می‌شود و زمان باقی‌مانده در عنوان تب دیده می‌شود.</small></div></section>
 
 <section class="tool" id="t-compress"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="compress"></i><span>کاهش حجم عکس</span></h2>
-<input type="file" id="fc-in" accept="image/*" multiple>
+<div id="fc-dz" class="out" style="text-align:center;padding:28px;border-style:dashed;cursor:pointer">عکس‌ها را اینجا بکشید یا برای انتخاب کلیک کنید</div>
+<input type="file" id="fc-in" accept="image/*" multiple hidden>
 <div class="row"><div><label>کیفیت: <b id="fc-qv">70</b>٪</label><input type="range" id="fc-q" min="10" max="95" value="70" style="width:100%"></div>
-<div><label>حداکثر عرض (پیکسل، ۰ = بدون تغییر)</label><input type="number" id="fc-w" value="0" min="0"></div></div>
-<div id="fc-out"></div></section>
+<div><label>حداکثر عرض (۰ = بدون تغییر)</label><input type="number" id="fc-w" value="0" min="0"></div>
+<div><label>فرمت خروجی</label><select id="fc-f"><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option></select></div></div>
+<div class="res" id="fc-sum"></div><div id="fc-out"></div></section>
 
 <section class="tool" id="t-pdf"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="pdf"></i><span>پی‌دی‌اف‌ساز</span></h2>
@@ -50,39 +54,45 @@
 <label>متن</label><textarea id="pd-b"></textarea>
 <label>جدول (هر خط یک ردیف، ستون‌ها با کاما)</label><textarea id="pd-tb" placeholder="نام, تعداد, قیمت" style="min-height:80px"></textarea>
 <label>عکس (اختیاری)</label><input type="file" id="pd-i" accept="image/*">
+<div class="row"><div><label>اندازه‌ی صفحه</label><select id="pd-sz"><option>A4</option><option>A5</option><option>Letter</option></select></div><div><label>جهت</label><select id="pd-or"><option value="portrait">عمودی</option><option value="landscape">افقی</option></select></div><div><label>اندازه‌ی متن (px)</label><input type="number" id="pd-fs" value="14" min="8" max="40"></div><div><label>چینش متن</label><select id="pd-al"><option value="right">راست</option><option value="center">وسط</option><option value="justify">دوطرفه</option></select></div></div>
 <div class="row"><button class="btn" id="pd-go">ساخت PDF (چاپ ← ذخیره به‌صورت PDF)</button></div></section>
 
 <section class="tool" id="t-distance"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="distance"></i><span>فاصله‌یاب شهرها</span></h2>
-<div class="row"><div><label>مبدأ</label><select id="d-a"></select></div><div><label>مقصد</label><select id="d-b"></select></div></div>
-<div class="out" id="d-r"></div><small style="color:var(--mut)">برآورد تقریبی از روی مختصات؛ مسیر واقعی ممکن است متفاوت باشد.</small></section>
+<div class="row"><div><label>مبدأ</label><select id="d-a"></select></div><button class="ghost" id="d-sw" style="flex:0 0 auto;align-self:flex-end">⇄ جابه‌جایی</button><div><label>مقصد</label><select id="d-b"></select></div></div>
+<div class="row"><div><label>سرعت میانگین (km/h)</label><input type="number" id="d-sp" value="75" min="20"></div><div><label>مصرف (لیتر در ۱۰۰ کیلومتر)</label><input type="number" id="d-c" value="8" min="0" step="0.5"></div><div><label>قیمت هر لیتر (تومان)</label><input type="text" id="d-pr" inputmode="numeric" placeholder="اختیاری"></div></div>
+<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="d-rt"> رفت و برگشت</label>
+<div class="out" id="d-r"></div><small style="color:var(--mut)">برآورد تقریبی از روی مختصات؛ مسیر و ترافیک واقعی ممکن است متفاوت باشد.</small></section>
 
 <section class="tool" id="t-invoice"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="invoice"></i><span>ساخت فاکتور</span></h2>
-<div class="row"><div><label>نوع</label><select data-k="type"><option>فاکتور فروش</option><option>پیش‌فاکتور</option><option>رسید</option></select></div><div><label>شماره</label><input type="text" data-k="no"></div><div><label>تاریخ</label><input type="text" data-k="date"></div></div>
+<div class="row"><div><label>نوع</label><select data-k="type"><option>فاکتور فروش</option><option>پیش‌فاکتور</option><option>رسید</option></select></div><div><label>شماره</label><input type="text" data-k="no"></div><div><label>تاریخ</label><input type="text" data-k="date"></div><div><label>واحد پول</label><select data-k="unit"><option>تومان</option><option>ریال</option></select></div></div>
 <div class="row"><div><label>فروشنده</label><input type="text" data-k="seller"></div><div><label>خریدار</label><input type="text" data-k="buyer"></div></div>
-<label>اقلام (شرح، تعداد، قیمت واحد)</label><div id="iv-rows"></div>
+<label>اقلام (شرح، تعداد، قیمت واحد، مبلغ)</label><div id="iv-rows"></div>
 <button class="ghost" id="iv-add">+ افزودن ردیف</button>
 <div class="row"><div><label>تخفیف ٪</label><input type="number" data-k="disc" min="0"></div><div><label>مالیات ٪</label><input type="number" data-k="tax" min="0"></div></div>
-<div class="out res" id="iv-t"></div>
-<div class="row"><button class="btn" id="iv-go">چاپ / ذخیره PDF</button></div><small style="color:var(--mut)">پیش‌نویس به‌صورت خودکار ذخیره می‌شود.</small></section>
+<div class="out res" id="iv-t"></div><div id="iv-w" style="color:var(--mut);font-size:.9rem"></div>
+<div class="row"><button class="btn" id="iv-go">چاپ / ذخیره PDF</button><button class="ghost" id="iv-new">فاکتور جدید</button></div><small style="color:var(--mut)">پیش‌نویس به‌صورت خودکار ذخیره می‌شود؛ «فاکتور جدید» شماره را یکی بالا می‌برد و اقلام را پاک می‌کند.</small></section>
 
 <section class="tool" id="t-wheel"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="wheel"></i><span>گردونه شانس</span></h2>
-<div class="row"><div style="flex:1 1 220px"><label>گزینه‌ها (هر خط یکی)</label><textarea id="wh-o" style="min-height:180px">گزینه ۱
+<div class="row"><div style="flex:1 1 220px"><label>گزینه‌ها (هر خط یکی)</label><textarea id="wh-o" style="min-height:160px">گزینه ۱
 گزینه ۲
 گزینه ۳
-گزینه ۴</textarea></div>
+گزینه ۴</textarea>
+<div class="row"><button class="ghost" id="wh-sh" style="flex:0 0 auto">بُر زدن</button><label style="display:flex;gap:6px;align-items:center;margin:0"><input type="checkbox" id="wh-rm"> حذف برنده از گردونه</label></div>
+<small style="color:var(--mut)">تاریخچه: <span id="wh-h">—</span></small></div>
 <div style="flex:1 1 300px;text-align:center"><svg viewBox="0 0 300 300" width="100%" style="max-width:320px"><g id="wg" style="transform-origin:150px 150px"></g><path d="M141 2h18l-9 24z" fill="var(--fg)"/></svg>
 <button class="btn" id="wh-go">بچرخان!</button><div class="res" id="wh-r"></div></div></div></section>
 
 <section class="tool" id="t-checklist"><button class="ghost back" data-home>→ بازگشت</button>
 <h2><i data-i="checklist"></i><span>چک‌لیست</span></h2>
-<div class="row"><input type="text" id="ck-i" placeholder="کار جدید…" style="flex:3 1 200px"><button class="btn" id="ck-add" style="flex:0 0 auto">افزودن</button></div>
-<div id="ck-p" style="color:var(--mut)"></div><div class="bar"><i id="ck-b"></i></div><ul id="ck-l"></ul></section>
+<div class="row"><input type="text" id="ck-i" placeholder="کار جدید… (Enter)" style="flex:3 1 200px"><button class="btn" id="ck-add" style="flex:0 0 auto">افزودن</button></div>
+<div class="tabs"><button class="ghost on" data-fl="all">همه</button><button class="ghost" data-fl="act">انجام‌نشده</button><button class="ghost" data-fl="done">انجام‌شده</button><button class="ghost" id="ck-clr" style="margin-inline-start:auto">پاک کردن انجام‌شده‌ها</button></div>
+<div id="ck-p" style="color:var(--mut)"></div><div class="bar"><i id="ck-b"></i></div><ul id="ck-l"></ul><small style="color:var(--mut)">برای ویرایش، روی متن کار دوبار کلیک کنید.</small></section>
 
-<footer>ساخته‌شده برای استفاده‌ی سریع و آفلاین</footer>
 </div>
+<footer><div class="upw"><button class="up" id="up">بازگشت به بالا ↑</button></div><div class="ft"><div><div class="logo"><span class="ic" data-i="logo"></span>جعبه ابزار</div><p style="margin-top:10px">مجموعه‌ای از ابزارهای آنلاین کاربردی که همه‌چیز را روی دستگاه شما اجرا می‌کنند.</p></div><div><h4>ابزارها</h4><div id="ft-tools"></div></div><div><h4>درباره</h4><p>رایگان و بدون نیاز به ثبت‌نام</p><p>داده‌ها فقط در مرورگر شما ذخیره می‌شوند</p><p>مناسب موبایل و دسکتاپ</p></div></div><div class="cp">© <span id="yr"></span> جعبه ابزار</div></footer>
 <div id="pa"></div>
 <script src="js/core.js"></script>
 <script src="js/tools/notepad.js"></script>

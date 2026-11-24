@@ -1,4 +1,5 @@
 const $=id=>document.getElementById(id);
+{const f=document.createElement("link");f.rel="stylesheet";f.href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap";document.head.appendChild(f)}
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ld=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}};
 const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
@@ -37,3 +38,12 @@ addEventListener("hashchange",route);route();
 document.querySelectorAll("[data-home]").forEach(b=>b.onclick=()=>{location.hash="";route()});
 
 const printHtml=h=>{$("pa").innerHTML=h;window.print()};
+const fa=n=>Math.round(n).toLocaleString("fa-IR");
+const dg=s=>String(s).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)).replace(/[٠-٩]/g,d=>"٠١٢٣٤٥٦٧٨٩".indexOf(d)).replace(/\D/g,"");
+function money(el){const pos=el.selectionStart,right=dg(el.value.slice(pos)).length,n=+dg(el.value)||0;el.value=n?fa(n):"";let i=el.value.length,c=0;while(i>0&&c<right){i--;if(dg(el.value[i]))c++}el.setSelectionRange(i,i);return n}
+function words(n){if(!n)return"صفر";const u=["","یک","دو","سه","چهار","پنج","شش","هفت","هشت","نه","ده","یازده","دوازده","سیزده","چهارده","پانزده","شانزده","هفده","هجده","نوزده"],t=["","","بیست","سی","چهل","پنجاه","شصت","هفتاد","هشتاد","نود"],h=["","صد","دویست","سیصد","چهارصد","پانصد","ششصد","هفتصد","هشتصد","نهصد"],g=["","هزار","میلیون","میلیارد","تریلیون"];
+const tri=x=>{const a=[];if(x>=100)a.push(h[Math.floor(x/100)]);x%=100;if(x>=20){a.push(t[Math.floor(x/10)]);if(x%10)a.push(u[x%10])}else if(x)a.push(u[x]);return a.join(" و ")};
+const p=[];let i=0;while(n>0){const x=n%1000;if(x)p.unshift(tri(x)+(g[i]?" "+g[i]:""));n=Math.floor(n/1000);i++}return p.join(" و ")}
+async function saveFile(name,data){let d=null;try{d=window.claude&&await claude.use("downloads")}catch(e){}
+if(d){try{await d.save({filename:name,data})}catch(e){}return}
+const a=document.createElement("a");a.href=URL.createObjectURL(data instanceof Blob?data:new Blob([data]));a.download=name;document.body.appendChild(a);a.click();a.remove()}

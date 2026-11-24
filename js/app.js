@@ -1,4 +1,3 @@
-// Header: banner, clock, Jalali calendar
 const BANNER_SRC="assets/banner.webp";
 if(BANNER_SRC)$("bn").innerHTML=`<img src="${BANNER_SRC}" alt="">`;
 const pf=(o,d)=>new Intl.DateTimeFormat("fa-IR-u-ca-persian",o).format(d);
@@ -10,3 +9,9 @@ $("cal").innerHTML=h;$("dt").textContent=pf({weekday:"long",day:"numeric",month:
 let lastDay=-1;
 function tick(){const n=new Date();$("clk").textContent=n.toLocaleTimeString("fa-IR",{hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false});if(n.getDate()!=lastDay){lastDay=n.getDate();calDraw()}}
 setInterval(tick,1000);tick();
+$("ft-tools").innerHTML=TOOLS.map(t=>`<a href="#${t[0]}">${t[1]}</a>`).join("");$("yr").textContent=pf({year:"numeric"},new Date());
+const goHome=id=>{try{history.replaceState(null,"",location.pathname+location.search)}catch(e){location.hash=""}route();if(id)setTimeout(()=>$(id).scrollIntoView({behavior:"smooth"}),0)};
+$("n-cta").onclick=e=>{e.preventDefault();goHome("sec-t")};$("lg").onclick=()=>goHome();
+$("q").addEventListener("focus",()=>{if(location.hash)goHome()});
+addEventListener("keydown",e=>{if(e.key=="/"&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)){e.preventDefault();$("q").focus()}});
+$("up").onclick=()=>scrollTo({top:0,behavior:"smooth"});
