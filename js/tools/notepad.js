@@ -1,3 +1,4 @@
+// Notepad
 let notes=ld("nb",[]),cur=null,dc=0;
 function nList(){const q=nz($("n-s").value);$("n-list").innerHTML=notes.filter(n=>!q||nz(n.t+" "+n.b).includes(q)).map(n=>`<button class="ghost${n.id==cur?" on":""}" data-id="${n.id}">${esc(n.t||"بدون عنوان")}</button>`).join("")||'<small style="color:var(--mut)">یادداشتی پیدا نشد</small>'}
 function nInfo(){const n=notes.find(x=>x.id==cur);if(n)$("n-i").textContent=`${(n.b.trim().match(/\S+/g)||[]).length} کلمه · ${n.b.length} کاراکتر · ذخیره‌شده ${new Date(n.u||n.id).toLocaleTimeString("fa-IR",{hour:"2-digit",minute:"2-digit"})}`}

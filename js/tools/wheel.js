@@ -1,3 +1,4 @@
+// Wheel
 let rot=0,spin=0,hist=[];
 const wOpts=()=>$("wh-o").value.split("\n").map(s=>s.trim()).filter(Boolean);
 function wDraw(){const o=wOpts(),n=o.length,s=360/n,R=Math.PI/180;let h="";

@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>جعبه ابزار</title>
+<link rel="icon" href="assets/logo.webp">
 
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header><div class="nav"><div class="logo" id="lg" style="cursor:pointer"><span class="ic" data-i="logo"></span>جعبه ابزار</div><input class="search" id="q" type="text" placeholder="جستجوی ابزار… (مثلاً تایمر، فاکتور، فاصله)"><a class="out" href="#" id="n-cta">همه‌ی ابزارها</a></div></header>
+<header><div class="nav"><div class="logo" id="lg" style="cursor:pointer"><span class="ic" data-i="logo"></span><span data-t="brand">جعبه ابزار</span></div><input class="search" id="q" type="text" placeholder="جستجوی ابزار…"><select id="lang" aria-label="Language"><option value="fa">فارسی</option><option value="en">English</option><option value="tr">Türkçe</option><option value="ar">العربية</option><option value="az">Azərbaycanca</option></select><a class="cta" href="#" id="n-cta" data-t="all">همه‌ی ابزارها</a></div></header>
 <div class="wrap">
 
 <main id="home">
@@ -16,9 +17,9 @@
 <div><div class="banner" id="bn">جای بنر؛ عکس را بعداً اضافه می‌کنیم</div></div>
 <aside class="side"><div class="clock" id="clk"></div><div class="dt" id="dt"></div><div class="cal" id="cal"></div></aside>
 </div>
-<div id="pop" style="display:none"><div class="sec">پرکاربردترین‌ها</div><div class="grid" id="popg"></div></div>
+<div id="pop" style="display:none"><div class="sec" data-t="pop">پرکاربردترین‌ها</div><div class="grid" id="popg"></div></div>
 <div class="panel"><div class="sec" id="sec-t">خدمات</div><div class="grid" id="grid"></div></div>
-<div id="empty" style="display:none;text-align:center;color:var(--mut);padding:24px">ابزاری پیدا نشد.</div>
+<div id="empty" data-t="none" style="display:none;text-align:center;color:var(--mut);padding:24px">ابزاری پیدا نشد.</div>
 </main>
 
 <section class="tool" id="t-notepad"><button class="ghost back" data-home>→ بازگشت</button>
@@ -40,12 +41,12 @@
 <small style="color:var(--mut)">دوره‌های تمرکز کامل‌شده: <b id="pm-c">0</b> · با پایان هر مرحله هشدار صوتی پخش می‌شود و زمان باقی‌مانده در عنوان تب دیده می‌شود.</small></div></section>
 
 <section class="tool" id="t-compress"><button class="ghost back" data-home>→ بازگشت</button>
-<h2><i data-i="compress"></i><span>کاهش حجم عکس</span></h2>
-<div id="fc-dz" class="out" style="text-align:center;padding:28px;border-style:dashed;cursor:pointer">عکس‌ها را اینجا بکشید یا برای انتخاب کلیک کنید</div>
-<input type="file" id="fc-in" accept="image/*" multiple hidden>
+<h2><i data-i="compress"></i><span>کاهش حجم عکس و PDF</span></h2>
+<label id="fc-dz" class="out" style="position:relative;display:block;text-align:center;padding:28px 12px;border-style:dashed;cursor:pointer">عکس یا PDF را انتخاب کنید (یا اینجا رها کنید)<input type="file" id="fc-in" accept="image/*,application/pdf,.pdf,.heic,.heif" multiple style="position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer"></label>
 <div class="row"><div><label>کیفیت: <b id="fc-qv">70</b>٪</label><input type="range" id="fc-q" min="10" max="95" value="70" style="width:100%"></div>
-<div><label>حداکثر عرض (۰ = بدون تغییر)</label><input type="number" id="fc-w" value="0" min="0"></div>
-<div><label>فرمت خروجی</label><select id="fc-f"><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option></select></div></div>
+<div><label>حداکثر عرض عکس (۰ = بدون تغییر)</label><input type="number" id="fc-w" value="0" min="0"></div>
+<div><label>فرمت خروجی عکس</label><select id="fc-f"><option value="image/jpeg">JPEG</option><option value="image/webp">WebP</option></select></div></div>
+<small style="color:var(--mut)">PDF با تبدیل صفحه‌ها به تصویر فشرده می‌شود؛ حجم به‌شدت کم می‌شود ولی متن دیگر قابل انتخاب نیست.</small>
 <div class="res" id="fc-sum"></div><div id="fc-out"></div></section>
 
 <section class="tool" id="t-pdf"><button class="ghost back" data-home>→ بازگشت</button>
@@ -89,10 +90,23 @@
 <h2><i data-i="checklist"></i><span>چک‌لیست</span></h2>
 <div class="row"><input type="text" id="ck-i" placeholder="کار جدید… (Enter)" style="flex:3 1 200px"><button class="btn" id="ck-add" style="flex:0 0 auto">افزودن</button></div>
 <div class="tabs"><button class="ghost on" data-fl="all">همه</button><button class="ghost" data-fl="act">انجام‌نشده</button><button class="ghost" data-fl="done">انجام‌شده</button><button class="ghost" id="ck-clr" style="margin-inline-start:auto">پاک کردن انجام‌شده‌ها</button></div>
-<div id="ck-p" style="color:var(--mut)"></div><div class="bar"><i id="ck-b"></i></div><ul id="ck-l"></ul><small style="color:var(--mut)">برای ویرایش، روی متن کار دوبار کلیک کنید.</small></section>
+<div id="ck-p" style="color:var(--mut)"></div><div class="bar"><i id="ck-b"></i></div><ul id="ck-l"></ul><small style="color:var(--mut)">برای ویرایش، دکمه‌ی ✎ را بزنید (یا روی متن دوبار کلیک کنید).</small></section>
+<section class="tool" id="t-translate"><button class="ghost back" data-home>→ بازگشت</button>
+<h2><i data-i="translate"></i><span>مترجم آفلاین</span></h2>
+<div class="row"><div><label>از</label><select id="tr-f"></select></div><button class="ghost" id="tr-sw" style="flex:0 0 auto;align-self:flex-end">⇄</button><div><label>به</label><select id="tr-t"></select></div></div>
+<textarea id="tr-i" placeholder="متن را بنویسید…"></textarea>
+<div class="row"><button class="btn" id="tr-go">ترجمه</button><button class="ghost" id="tr-cp">کپی</button></div>
+<div class="out" id="tr-o" style="min-height:60px"></div><small id="tr-s" style="color:var(--mut)"></small></section>
+<section class="tool" id="t-learn"><button class="ghost back" data-home>→ بازگشت</button>
+<h2><i data-i="learn"></i><span>آموزش زبان</span></h2><div id="ln-box"></div></section>
+<section class="tool" id="t-prompts"><button class="ghost back" data-home>→ بازگشت</button>
+<h2><i data-i="prompts"></i><span>پرامپت ساخت عکس</span></h2>
+<p style="color:var(--mut);margin-top:0">پرامپت دلخواه را کپی کنید و در هوش مصنوعی خودتان پیست کنید.</p>
+<div class="row" id="pr-ai"><a class="ghost" href="https://chatgpt.com" target="_blank" rel="noopener" style="text-decoration:none;text-align:center">ChatGPT</a><a class="ghost" href="https://gemini.google.com" target="_blank" rel="noopener" style="text-decoration:none;text-align:center">Gemini</a><a class="ghost" href="https://copilot.microsoft.com" target="_blank" rel="noopener" style="text-decoration:none;text-align:center">Copilot</a><a class="ghost" href="https://www.midjourney.com" target="_blank" rel="noopener" style="text-decoration:none;text-align:center">Midjourney</a></div>
+<div class="tabs" id="pr-f"></div><div class="grid" id="pr-g"></div></section>
 
 </div>
-<footer><div class="upw"><button class="up" id="up">بازگشت به بالا ↑</button></div><div class="ft"><div><div class="logo"><span class="ic" data-i="logo"></span>جعبه ابزار</div><p style="margin-top:10px">مجموعه‌ای از ابزارهای آنلاین کاربردی که همه‌چیز را روی دستگاه شما اجرا می‌کنند.</p></div><div><h4>ابزارها</h4><div id="ft-tools"></div></div><div><h4>درباره</h4><p>رایگان و بدون نیاز به ثبت‌نام</p><p>داده‌ها فقط در مرورگر شما ذخیره می‌شوند</p><p>مناسب موبایل و دسکتاپ</p></div></div><div class="cp">© <span id="yr"></span> جعبه ابزار</div></footer>
+<footer><div class="upw"><button class="up" id="up">بازگشت به بالا ↑</button></div><div class="ft"><div><div class="logo"><span class="ic" data-i="logo"></span><span data-t="brand">جعبه ابزار</span></div><p style="margin-top:10px" data-t="foot"></p></div><div><h4 data-t="tools">ابزارها</h4><div id="ft-tools"></div></div><div><h4 data-t="about">درباره</h4><p data-t="a1"></p><p data-t="a2"></p><p data-t="a3"></p></div></div><div class="cp">© <span id="yr"></span> <span data-t="brand">جعبه ابزار</span></div></footer>
 <div id="pa"></div>
 <script src="js/core.js"></script>
 <script src="js/tools/notepad.js"></script>
@@ -103,6 +117,9 @@
 <script src="js/tools/invoice.js"></script>
 <script src="js/tools/wheel.js"></script>
 <script src="js/tools/checklist.js"></script>
+<script src="js/tools/translate.js"></script>
+<script src="js/tools/learn.js"></script>
+<script src="js/tools/prompts.js"></script>
 <script src="js/app.js"></script>
 </body>
 </html>

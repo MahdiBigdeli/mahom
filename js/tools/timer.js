@@ -1,3 +1,4 @@
+// Timer
 let ac;function beep(){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();for(let i=0;i<3;i++){const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=880;g.gain.value=.2;o.start(ac.currentTime+i*.4);o.stop(ac.currentTime+i*.4+.2)}}catch(e){}}
 const p2=n=>String(n).padStart(2,"0"),fmt=ms=>{const s=Math.max(0,Math.ceil(ms/1000));return p2(Math.floor(s/60))+":"+p2(s%60)},f2=ms=>p2(Math.floor(ms/60000))+":"+p2(Math.floor(ms/1000)%60)+"."+p2(Math.floor(ms/10)%100);
 const T={cd:{run:0,left:0,end:0},sw:{run:0,el:0,st:0,laps:[]},pm:{run:0,left:1500000,end:0,w:1,n:0}};
@@ -20,6 +21,6 @@ $("sw-l").innerHTML=s.laps.map((x,i)=>`<li><span>دور ${i+1}</span><b dir="ltr
 const p=T.pm;let r=p.run?p.end-Date.now():p.left;
 if(p.run&&r<=0){beep();if(p.w)p.n++;p.w=p.w?0:1;p.left=r=pmLen(p.w);p.end=Date.now()+r}
 $("pm-d").textContent=fmt(r);$("pm-m").textContent=p.w?"زمان تمرکز":"استراحت";$("pm-c").textContent=p.n;
-const tt=c.run?fmt(l):p.run?fmt(r):"";document.title=tt?tt+" · جعبه ابزار":"جعبه ابزار"}
+const tm=c.run?fmt(l):p.run?fmt(r):"";document.title=tm?tm+" · "+tt("brand"):tt("brand")}
 setInterval(draw,200);draw();
 document.querySelectorAll("[data-tb]").forEach(b=>b.onclick=()=>{document.querySelectorAll("[data-tb]").forEach(x=>x.classList.toggle("on",x==b));document.querySelectorAll(".tp").forEach(t=>t.style.display=t.id=="tp-"+b.dataset.tb?"block":"none")});

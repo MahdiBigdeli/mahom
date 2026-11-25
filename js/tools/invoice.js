@@ -1,3 +1,4 @@
+// Invoice
 let inv=Object.assign({type:"فاکتور فروش",no:"1",date:new Date().toLocaleDateString("fa-IR"),seller:"",buyer:"",disc:0,tax:9,unit:"تومان",items:[{n:"",q:1,p:0}]},ld("inv",{}));
 function ivTot(){const s=inv.items.reduce((a,x)=>a+x.q*x.p,0),d=s*inv.disc/100,t=(s-d)*inv.tax/100;return{s,d,t,g:s-d+t}}
 function ivShow(){const x=ivTot();$("iv-t").innerHTML=`جمع: ${fa(x.s)} · تخفیف: ${fa(x.d)} · مالیات: ${fa(x.t)}<br>مبلغ نهایی: ${fa(x.g)} ${inv.unit}`;
